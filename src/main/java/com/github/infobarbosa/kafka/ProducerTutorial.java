@@ -39,6 +39,14 @@ public class ProducerTutorial {
                         logger.info("Mensagems " + key + " processada com sucesso. Offset: " + metadata.offset());
                 }
             });
+
+            //coloca pra dormir um pouco
+            try {
+                Thread.sleep(100);
+            }
+            catch(InterruptedException e){
+                logger.error("problemas durante o sono.", e);
+            }
         }
 
         try{
