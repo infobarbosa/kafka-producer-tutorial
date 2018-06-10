@@ -21,7 +21,7 @@ public class ProducerTutorial {
         properties.put(ProducerConfig.RETRIES_CONFIG, "3");
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
-        final String topic = "teste";
+        final String topic = "teste2";
 
         ProducerRecord<String, String> record = null;
 
@@ -36,7 +36,11 @@ public class ProducerTutorial {
                     if(exception != null)
                         logger.error("Erro processando a mensagem "  + key, exception.getMessage());
                     else
-                        logger.info("Mensagems " + key + " processada com sucesso. Offset: " + metadata.offset());
+                        logger.info("K: " + key
+                                + ". P: " + metadata.partition()
+                                + ". OS: " + metadata.offset()
+                                + ". TS: " + metadata.timestamp()
+                        );
                 }
             });
 
