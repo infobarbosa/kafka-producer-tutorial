@@ -12,7 +12,7 @@ public class ProducerTutorial {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka1:9092,kafka2:9092,kafka3:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, System.getenv("BOOTSTRAP_SERVERS_CONFIG"));
         properties.put(ProducerConfig.ACKS_CONFIG, "all");
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -21,7 +21,7 @@ public class ProducerTutorial {
         properties.put(ProducerConfig.RETRIES_CONFIG, "3");
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
-        final String topic = "teste2";
+        final String topic = "teste";
 
         ProducerRecord<String, String> record = null;
 
